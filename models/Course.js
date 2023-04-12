@@ -20,6 +20,10 @@ const courseSchema = new Schema({
     type: String,
     unique: true,
   },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'category',
+  },
 });
 
 courseSchema.pre('validate', function (next) {

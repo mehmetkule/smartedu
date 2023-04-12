@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const pageRouter = require('./routers/pageRouter');
 const courseRouter = require('./routers/courseRouter');
+const categoryRouter = require('./routers/categoryRouter');
 const app = express();
 
 //Database Connection
@@ -26,6 +27,7 @@ app.use(express.json());
 //Routes
 app.use('/', pageRouter);
 app.use('/courses', courseRouter);
+app.use('/categories', categoryRouter);
 
 const port = 3000;
 app.listen(port, () => {
