@@ -24,11 +24,11 @@ exports.loginPage = (req, res) => {
 };
 
 
-// exports.contactPage = (req, res) => {
-//   res.status(200).render('contact', {
-//     page_name: 'contact',
-//   });
-// };
+exports.contactPage = (req, res) => {
+  res.status(200).render('contact', {
+    page_name: 'contact',
+  });
+};
 
 // exports.courseSinglePage = (req, res) => {
 //   res.status(200).render('course', {
