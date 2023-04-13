@@ -8,10 +8,11 @@ const userRouter = require('./routers/userRouter');
 const app = express();
 
 //Database Connection
-mongoose.connect('mongodb://127.0.0.1:27017/smartedu-db', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose
+  .connect('mongodb://127.0.0.1:27017/smartedu-db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log('Database Connected');
   })
@@ -22,16 +23,27 @@ mongoose.connect('mongodb://127.0.0.1:27017/smartedu-db', {
 //Template Engine
 app.set('view engine', 'ejs');
 
+//Global Variables
+
+global.userIN = null;
+
 //Static Files
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(session({
-  secret: 'my_keyboard_cat',
-  resave: false,
-  saveUninitialized: true,
-}));
+app.use(
+  session({
+    secret: 'my_keyboard_cat',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 //Routes
+app.use('*', (req, res, next) => {
+  userIN = req.session.userID;
+  next();
+});
 app.use('/', pageRouter);
 app.use('/courses', courseRouter);
 app.use('/categories', categoryRouter);
