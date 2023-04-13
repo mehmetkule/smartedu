@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
 const pageRouter = require('./routers/pageRouter');
 const courseRouter = require('./routers/courseRouter');
 const categoryRouter = require('./routers/categoryRouter');
@@ -8,8 +10,9 @@ const userRouter = require('./routers/userRouter');
 const app = express();
 
 //Database Connection
+const db = "mongodb://127.0.0.1:27017/smartedu-db";
 mongoose
-  .connect('mongodb://127.0.0.1:27017/smartedu-db', {
+  .connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -37,6 +40,7 @@ app.use(
     secret: 'my_keyboard_cat',
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: db }),
   })
 );
 //Routes
