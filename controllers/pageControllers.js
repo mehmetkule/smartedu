@@ -10,27 +10,9 @@ exports.aboutPage = (req, res) => {
   });
 };
 
-exports.contactPage = (req, res) => {
-  res.status(200).render('contact', {
-    page_name: 'contact',
-  });
-};
-
-exports.courseSinglePage = (req, res) => {
-  res.status(200).render('course-single', {
-    page_name: 'course-single',
-  });
-};
-
-exports.coursesPage = (req, res) => {
-  res.status(200).render('courses', {
-    page_name: 'courses',
-  });
-};
-
-exports.dashboardPage = (req, res) => {
-  res.status(200).render('dashboard', {
-    page_name: 'dashboard',
+exports.getRegisterPage = (req, res) => {
+  res.status(200).render('register', {
+    page_name: 'register',
   });
 };
 
@@ -40,8 +22,30 @@ exports.loginPage = (req, res) => {
   });
 };
 
-exports.registerPage = (req, res) => {
-  res.status(200).render('register', {
-    page_name: 'register',
-  });
-};
+
+// exports.contactPage = (req, res) => {
+//   res.status(200).render('contact', {
+//     page_name: 'contact',
+//   });
+// };
+
+// exports.courseSinglePage = (req, res) => {
+//   res.status(200).render('course', {
+//     page_name: 'course',
+//   });
+// };
+
+// exports.coursesPage = (req, res) => {
+//   res.status(200).render('courses', {
+//     page_name: 'courses',
+//   });
+// };
+
+// exports.dashboardPage = (req, res) => {
+//   res.status(200).render('dashboard', {
+//     page_name: 'dashboard',
+//   });
+// };
+
+
+
