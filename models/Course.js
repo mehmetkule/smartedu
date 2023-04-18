@@ -24,6 +24,10 @@ const courseSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'category',
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
 
 courseSchema.pre('validate', function (next) {
