@@ -25,7 +25,6 @@ exports.loginPage = (req, res) => {
   });
 };
 
-
 exports.contactPage = (req, res) => {
   res.status(200).render('contact', {
     page_name: 'contact',
@@ -45,30 +44,27 @@ exports.sendEmail = async (req, res) => {
     <p>${message}</p>
   `;
   // create reusable transporter object using the default SMTP transport
-  let transporter =  nodeMailer.createTransport({
+  let transporter = nodeMailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-          user:"your email",
-          pass:"your password"
-      },
+      user: 'your email',
+      pass: 'your password',
+    },
     tls: {
-      rejectUnauthorized: false
-    }
+      rejectUnauthorized: false,
+    },
   });
 
   let info = await transporter.sendMail({
     from: '"Smart EDU Contact 👻" <mk@gmail.com>', // sender address
-    to: "mk@gmail.com", // list of receivers
-    subject: "Smart EDU Contact Form New Message", // Subject line
+    to: 'mk@gmail.com', // list of receivers
+    subject: 'Smart EDU Contact Form New Message', // Subject line
     html: output, // html body
   });
-  console.log("Message sent: %s", info.messageId);
-  console.log("Preview URL: %s", nodeMailer.getTestMessageUrl(info));
-  
+  console.log('Message sent: %s', info.messageId);
+  console.log('Preview URL: %s', nodeMailer.getTestMessageUrl(info));
+
   res.status(200).redirect('/contact');
-
 };
-
-
