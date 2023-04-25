@@ -11,7 +11,7 @@ const userRouter = require('./routers/userRouter');
 const app = express();
 
 //Database Connection
-const db = "mongodb://127.0.0.1:27017/smartedu-db";
+const db = 'mongodb://127.0.0.1:27017/smartedu-db';
 mongoose
   .connect(db, {
     useNewUrlParser: true,
@@ -57,16 +57,16 @@ app.use(
 );
 
 app.use(flash());
-app.use((req, res, next)=> {
+app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
   next();
-})
+});
 app.use('/', pageRouter);
 app.use('/courses', courseRouter);
 app.use('/categories', categoryRouter);
 app.use('/users', userRouter);
 
-const port = 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`App started on port ${port}`);
 });
