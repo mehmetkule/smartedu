@@ -27,5 +27,7 @@ router.route('/signup').post(
 router.route('/login').post(user.loginUser);
 router.route('/logout').get(user.logoutUser);
 router.route('/dashboard').get(middleware, user.getDasboardPage);
+router.route('/:id').delete(user.deleteUser);
+
 
 module.exports = router;
